@@ -58,13 +58,53 @@ export default {
     obtenerPathVariable() {
       const cedula = this.$route.params.cedula;
       console.log("Cedula obtenida desde la ruta:", cedula);
+
       const anio = this.$route.query.anio;
-      console.log("anio"+ anio);
+      console.log("anio" + anio);
       const mes = this.$route.query.mes;
-      console.log("mes"+ mes);
+      console.log("mes" + mes);
     },
   },
+
+  beforeCreate() {
+    console.log("beforeCreate");
+  },
+  created() {
+    console.log("created,cuando se crea el componente");
+  },
+  beforeMount() {
+    console.log("beforeMount, ");
+  },
+  mounted() {
+    console.log("mounted");
+  },
+  beforeUpdate() {
+    console.log("beforeUpdate");
+  },
+  updated() {
+    console.log("updated, cuando se ha actualizado");
+  },
+  beforeUnmount() {
+    console.log("beforeUnmount, cuando se destruye o se quita un componente");
+  },
+  beforeDestroy() {
+    console.log("beforeDestroy");
+  },
   
+  unmounted() {
+    console.log("unmounted");
+    const cedula = this.$route.params.cedula;
+    console.log("Cedula obtenida desde la ruta:", cedula);
+
+    const anio = this.$route.query.anio;
+    console.log("anio" + anio);
+    const mes = this.$route.query.mes;
+    console.log("mes" + mes);
+  },
+
+  destroyed() {
+    console.log("destroyed");
+  },
 };
 </script >
 
