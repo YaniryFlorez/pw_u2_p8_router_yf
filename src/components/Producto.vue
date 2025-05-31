@@ -5,8 +5,10 @@
     </div>
     <label for="id_codigo">Codigo</label>
     <input v-model="nuevoCodigo" id="id_codigo" type="text" />
+    <spam v-if="mensaje.codigo">{{ mensaje.codigo }}</spam>
     <label for="id_nombre">Nombre</label>
-    <input v-model="nuevoNombre" id="id_nombre" type="text" />
+    <input v-model="mensaje.nombre" id="id_nombre" type="text" />
+    <spam v-if="nombreMsj">{{ mensaje.nombre }}</spam>
     <label for="id_precio">Precio</label>
     <input v-model="nuevoPrecio" id="id_precio" type="float" />
     <label for="id_caducidad">Fecha Caducidad</label>
@@ -52,10 +54,19 @@ export default {
       ],
       mostrar: false,
       datos: false,
+      codigoMsj: false,
+      nombreMsj: false,
+      mensaje: {
+        codigo: null,
+        nombre: null,
+      },
     };
   },
   methods: {
     guardarProducto() {
+      if(this.ValidarEntrada()) {
+       
+     
       const nuevo = {
         codigo: this.nuevoCodigo,
         nombre: this.nuevoNombre,
@@ -63,18 +74,50 @@ export default {
         caducidad: this.nuevaCaducidad,
         descripcion: this.nuevaDescripcion,
       };
+       }
       this.listaP.unshift(nuevo);
       this.mostrar = true;
       this.datos = true;
-      setTimeout(() => {this.mostrar = false;this.limpiar();}, 3000);
+      setTimeout(() => {
+        this.mostrar = false;
+        this.limpiar();
+      }, 3000);
+      this.mensajeFinal= "El producto se ha guardado correctamente";
+     
     },
     limpiar() {
-       this.nuevoCodigo="";
-        this.nuevoNombre="";
-       this.nuevoPrecio="";
-         this.nuevaCaducidad="";
-         this.nuevaDescripcion="";
+      this.nuevoCodigo = "";
+      this.nuevoNombre = "";
+      this.nuevoPrecio = "";
+      this.nuevaCaducidad = "";
+      this.nuevaDescripcion = "";
     },
+  },
+  ValidarEntrada() {
+    try{
+    this.validar = this.mensaje.nombre.primero;
+    let numero = 2;
+
+   if(this.nuevoCodigo === null) {
+      this.mensaje.codigo = "El codigo es obligatorio";
+     numero--;
+    }
+    if(this.nuevoNombre === null) {
+      this.mensaje.nombre = "El nombre es obligatorio";
+      numero--;
+    }
+    if(this.numero ===2){
+      return true;
+    }else{
+      return false;
+    }
+  }catch (error) {
+      console.error("Error al validar la entrada:");
+      console.error(error);
+      this.mensajeFinal= "Error al guardar el producto. Por favor, inténtelo de nuevo.";
+    }
+  
+    
   },
 };
 </script >

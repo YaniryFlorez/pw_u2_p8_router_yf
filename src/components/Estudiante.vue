@@ -11,14 +11,17 @@
     <label for="id_cedula">Cedula</label>
     <input v-model="nuevaCedula" id="id_cedula" type="text" />
     <button v-on:click="agragarEstudiante()">Agregar</button>
-    
+
     <button v-on:click="obtenerPathVariable()">Obtener PathVariable</button>
 
     <ul>
-      <li v-for="{ nombre, apellido, fecha, genero, cedula } in lista" :key="nombre">
-        Nombre:{{ nombre }}-Apellido:{{ apellido }}-
-        Fecha Nacimiento:{{ fecha }}-Genero:{{ genero }}-
-        Cedula:{{ cedula }}
+      <li
+        v-for="{ nombre, apellido, fecha, genero, cedula } in lista"
+        :key="nombre"
+      >
+        Nombre:{{ nombre }}-Apellido:{{ apellido }}- Fecha Nacimiento:{{
+          fecha
+        }}-Genero:{{ genero }}- Cedula:{{ cedula }}
       </li>
     </ul>
   </div>
@@ -48,25 +51,25 @@ export default {
         fecha: this.nuevaFecha,
         genero: this.nuevoGenero,
         cedula: this.cedula,
-
       };
       this.lista.unshift(nuevo);
     },
 
-   
-       obtenerPathVariable(){
-        const cedula = this.$route.params.cedula;
-        console.log("Cedula obtenida desde la ruta:", cedula);
-       } 
-  
-
+    obtenerPathVariable() {
+      const cedula = this.$route.params.cedula;
+      console.log("Cedula obtenida desde la ruta:", cedula);
+      const anio = this.$route.query.anio;
+      console.log("anio"+ anio);
+      const mes = this.$route.query.mes;
+      console.log("mes"+ mes);
+    },
   },
+  
 };
 </script >
 
 <style scoped>
-
-.container{
+.container {
   background: #ffffff;
   border: 1px solid;
   border-radius: 12px;
@@ -75,16 +78,15 @@ export default {
   padding: 30px;
 }
 
-label{
-display: block;
-color: #333;
-text-align: left;
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-font-size: 15px;
-
+label {
+  display: block;
+  color: #333;
+  text-align: left;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 15px;
 }
 
-input{
+input {
   background: #81b2fc;
   color: #123fff;
   width: 80%;
@@ -93,10 +95,9 @@ input{
   border: 1px solid #ddd;
   padding: 10px 52px;
   font-size: 17px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-button{
+button {
   background: #4279cb;
   color: #fff;
   padding: 12px 20px;
@@ -107,12 +108,11 @@ button{
   width: 120px;
 }
 
-ul{
+ul {
   list-style: none;
   margin-top: 50px;
-  
 }
-li{
+li {
   background: #d2d8de;
   padding: 8px;
   border-radius: 8px;
@@ -120,5 +120,4 @@ li{
   color: #333;
   font-size: 15px;
 }
-
 </style>

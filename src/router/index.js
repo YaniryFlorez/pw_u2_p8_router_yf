@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import EstudianteView from '@/views/EstudianteView.vue'
 import ContadorView from '@/views/ContadorView.vue'
 import PokemonView from '@/views/PokemonView.vue'
+import ProductoView from '@/views/ProductoView.vue'
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     path: '/pokemon',
     name: 'pokemonView',
     component: PokemonView
+  },
+    {
+    path: '/producto',
+    name: 'productoView',
+    component: ProductoView
   },
 
   {
