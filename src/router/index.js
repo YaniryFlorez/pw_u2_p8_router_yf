@@ -4,6 +4,7 @@ import EstudianteView from '@/views/EstudianteView.vue'
 import ContadorView from '@/views/ContadorView.vue'
 import PokemonView from '@/views/PokemonView.vue'
 import ProductoView from '@/views/ProductoView.vue'
+import PokemonNew from '@/views/PokemonsView.vue'
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     path: '/producto',
     name: 'productoView',
     component: ProductoView
+  },
+    {
+    path: '/pokemons',
+    name: 'pokemonsView',
+    component: PokemonNew
   },
 
   {
