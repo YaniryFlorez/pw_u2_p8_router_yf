@@ -29,7 +29,7 @@ export default {
   },
   data() {
     return {
-      mostarPokemon: this.mostrarImg,
+         mostarPokemon: this.mostrarImg,
     };
   },
   computed: {
