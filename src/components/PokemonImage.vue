@@ -1,5 +1,7 @@
 <template>
+  <h3>nuevo mensaje1</h3>
   <div class="container">
+    
     <img
       class="ocultar"
       v-if="!mostarPokemon"

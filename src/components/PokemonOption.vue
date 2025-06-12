@@ -32,7 +32,7 @@ ul {
   padding: 0;
 }
 li {
-  background-color: #f0f76f;
+  background-color: #f6f6ee;
   border-radius: 5px;
   border: 1px solid blanchedalmond;
   margin-bottom: 10px;
@@ -40,6 +40,6 @@ li {
   width: 200px;
 }
 li:hover {
-  background-color: #d0f761;
+  background-color: #f3f5ee;
 }
 </style>

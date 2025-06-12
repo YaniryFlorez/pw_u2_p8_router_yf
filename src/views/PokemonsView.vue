@@ -1,6 +1,6 @@
 <template>
   <h3>Selecciona el Pkemon Correcto</h3>
-  <PokemonImage :pokemonId="15" :mostrarImg="false" />
+  <PokemonImage :pokemonId="85" :mostrarImg="true" />
   <PokemonOption :pokemons="vectorPokemons"/>
 </template>
 
@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     async iniciarJuego() {
-      const opciones = await obtenerOpcionesFachada(4);
+      const opciones = await obtenerOpcionesFachada(8);
       this.vectorPokemons = opciones;
       console.log(opciones);
     },
