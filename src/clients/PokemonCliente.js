@@ -6,7 +6,6 @@ const obtenerPokemon = async (id) => {
     return {
       nombre: respuesta.data.name,
       imagen: respuesta.data.sprites.other['official-artwork'].front_default,
-      experiencia: respuesta.data.base_experience
     };
   } catch (error) {
     console.error("Error al obtener Pokémon:", error);

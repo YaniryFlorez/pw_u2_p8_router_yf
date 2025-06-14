@@ -49,9 +49,7 @@
 export default {
   data() {
     return {
-      listaP: [
-        { codigo: "", nombre: "", precio: "", caducidad: "", descripcion: "" },
-      ],
+      listaP: [],
       mostrar: false,
       datos: false,
       codigoMsj: false,
@@ -60,31 +58,38 @@ export default {
         codigo: null,
         nombre: null,
       },
+      nuevoCodigo: "", // Variable necesaria
+      nuevoNombre: "",
+      nuevoPrecio: "",
+      nuevaCaducidad: "",
+      nuevaDescripcion: "",
     };
   },
   methods: {
     guardarProducto() {
-      if(this.ValidarEntrada()) {
-       
-     
-      const nuevo = {
-        codigo: this.nuevoCodigo,
-        nombre: this.nuevoNombre,
-        precio: this.nuevoPrecio,
-        caducidad: this.nuevaCaducidad,
-        descripcion: this.nuevaDescripcion,
-      };
-       }
-      this.listaP.unshift(nuevo);
-      this.mostrar = true;
-      this.datos = true;
-      setTimeout(() => {
-        this.mostrar = false;
+      if (this.ValidarEntrada()) {
+        const nuevo = {
+          codigo: this.nuevoCodigo,
+          nombre: this.nuevoNombre,
+          precio: this.nuevoPrecio,
+          caducidad: this.nuevaCaducidad,
+          descripcion: this.nuevaDescripcion,
+        };
+
+        this.listaP.push(nuevo); 
+        this.mostrar = true;
+        this.datos = true;
+
+        setTimeout(() => {
+          this.mostrar = false;
+         
+        }, 3000);
+
+        this.mensajeFinal = "El producto se ha guardado correctamente";
         this.limpiar();
-      }, 3000);
-      this.mensajeFinal= "El producto se ha guardado correctamente";
-     
+      }
     },
+
     limpiar() {
       this.nuevoCodigo = "";
       this.nuevoNombre = "";
@@ -92,38 +97,37 @@ export default {
       this.nuevaCaducidad = "";
       this.nuevaDescripcion = "";
     },
-  },
-  ValidarEntrada() {
-    try{
-    this.validar = this.mensaje.nombre.primero;
-    let numero = 2;
 
-   if(this.nuevoCodigo === null) {
-      this.mensaje.codigo = "El codigo es obligatorio";
-     numero--;
+    ValidarEntrada() {
+      try {
+        this.mensaje = { codigo: null, nombre: null }; // Restaurar estructura inicial
+
+        let numero = 2;
+
+        if (!this.nuevoCodigo) {
+          this.mensaje.codigo = "El código es obligatorio";
+          numero--;
+        }
+        if (!this.nuevoNombre) {
+          this.mensaje.nombre = "El nombre es obligatorio";
+          numero--;
+        }
+
+        return numero === 2;
+      } catch (error) {
+        console.error("Error al validar la entrada:", error);
+        this.mensajeFinal = "Error al guardar el producto. Por favor, inténtelo de nuevo.";
+        return false;
+      }
     }
-    if(this.nuevoNombre === null) {
-      this.mensaje.nombre = "El nombre es obligatorio";
-      numero--;
-    }
-    if(this.numero ===2){
-      return true;
-    }else{
-      return false;
-    }
-  }catch (error) {
-      console.error("Error al validar la entrada:");
-      console.error(error);
-      this.mensajeFinal= "Error al guardar el producto. Por favor, inténtelo de nuevo.";
-    }
-  
-    
-  },
+  }
 };
 </script >
 
 <style scoped>
 .container {
+  display: flex;
+  flex-direction: column;
   background: #e4e0e0;
   border: 1px solid;
   border-radius: 12px;
@@ -133,6 +137,7 @@ export default {
 }
 
 label {
+  
   display: block;
   color: #333;
   text-align: left;
@@ -174,7 +179,7 @@ li {
   color: #333;
   font-size: 15px;
 }
-/* Estilo para la tabla */
+
 .tabla {
   width: 100%;
   border-collapse: collapse;

@@ -1,58 +1,52 @@
 <template>
-  <div class="container">
-    <img
-      class="ocultar"
-      v-if="!mostarPokemon"
-      :src="imagenUrl"
-      alt="Pokemon Imagen no esta disponible"
-    />
-    <img
-      v-if="mostarPokemon"
-      :src="imagenUrl"
-      alt="Pokemon Image no esta disponible"
-    />
+     <h3>{{ mensaje1 }}</h3>
+  <div class="image-container">
+    <img v-if="!mostrarImagen" class="ocultar"
+      :src="imagenFuente"
+      alt="No se puede renderizar pokemon">
+    <img v-if="mostrarImagen" :src="imagenFuente" alt="No se puede renderizar pokemon">
+ 
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    pokemonId: {
+    pokemonId:{
       type: Number,
       required: true,
     },
-    mostrarImg: {
+    mostrarImagen:{
       type: Boolean,
       required: true,
-      default: false,
+      default:  false,
     },
   },
   data() {
     return {
-         mostarPokemon: this.mostrarImg,
-    };
+      mensaje1:'mensaje1'
+    }
   },
   computed: {
-    imagenUrl() {
+    imagenFuente() {
       return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${this.pokemonId}.svg`;
-    },
+    }
   },
-};
+}
 </script>
 
 <style>
-.container {
-  width: 100%;
-  height: 200px;
-  justify-content: center;
-  align-items: center;
-}
 img {
-  position: absolute;
   height: 200px;
+  position: absolute;
   right: 42%;
 }
+
 .ocultar {
   filter: brightness(0);
 }
-</style>
+
+.image-container {
+  height: 200px;
+}
+</style> 

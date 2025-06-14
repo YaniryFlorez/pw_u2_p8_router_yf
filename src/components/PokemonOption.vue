@@ -1,9 +1,8 @@
 <template>
-  <h2>option</h2>
-  <div class="container">
+      <h3>{{ mensaje2 }}</h3>
+  <div class="option-container">
     <ul>
-      <li v-for="pokemon in pokemons" :key="pokemon.id">{{ pokemon.nombre }}</li>
-     
+      <li @click="comunicarclick(pokemon.id)" v-for="pokemon in pokemons" :key="pokemon.id">{{ pokemon.nombre }}</li>
     </ul>
   </div>
 </template>
@@ -11,35 +10,54 @@
 <script>
 
 export default {
+    data() {
+    return {
+      mensaje2:'mensaje2'
+    }
+  },
   props: {
     pokemons: {
       type: Array,
-      required: true,
+      required: true
     },
   },
- 
+  methods:{
+    comunicarclick(id){
+      console.log("Click...");
+      console.log("Id del hijo: "+id)
+      
+      const objetoEviado={
+        atributo:id,
+        atributo2:"Gaby",
+        atributo3:"dos "
+      }
+      this.$emit('seleccionado',objetoEviado)
+    },
+  },
+
 };
 </script>
 
 <style>
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 ul {
   list-style-type: none;
-  padding: 0;
 }
+
 li {
-  background-color: #f0f76f;
+  background: rgb(211, 243, 105);
   border-radius: 5px;
-  border: 1px solid blanchedalmond;
-  margin-bottom: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  width: 200px;
+  margin-bottom: 10px;
+  width: 250px;
 }
+
+.option-container {
+  display: flex;
+  justify-content: center;
+}
+
 li:hover {
-  background-color: #d0f761;
+  background: rgba(150, 239, 179, 0.742);
 }
 </style>
