@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
      <h3>{{ mensaje1 }}</h3>
   <div class="image-container">
     <img v-if="!mostrarImagen" class="ocultar"
@@ -6,6 +7,22 @@
       alt="No se puede renderizar pokemon">
     <img v-if="mostrarImagen" :src="imagenFuente" alt="No se puede renderizar pokemon">
  
+=======
+  <h3>nuevo mensaje1</h3>
+  <div class="container">
+    
+    <img
+      class="ocultar"
+      v-if="!mostarPokemon"
+      :src="imagenUrl"
+      alt="Pokemon Imagen no esta disponible"
+    />
+    <img
+      v-if="mostarPokemon"
+      :src="imagenUrl"
+      alt="Pokemon Image no esta disponible"
+    />
+>>>>>>> de45088cefb0c4776356eee11d793d4558c98579
   </div>
 </template>
 

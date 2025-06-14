@@ -44,7 +44,11 @@ ul {
 }
 
 li {
+<<<<<<< HEAD
   background: rgb(211, 243, 105);
+=======
+  background-color: #f6f6ee;
+>>>>>>> de45088cefb0c4776356eee11d793d4558c98579
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -58,6 +62,10 @@ li {
 }
 
 li:hover {
+<<<<<<< HEAD
   background: rgba(150, 239, 179, 0.742);
+=======
+  background-color: #f3f5ee;
+>>>>>>> de45088cefb0c4776356eee11d793d4558c98579
 }
 </style>

@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
     <div>
         <h1>Selecciona el Pokémon Correcto</h1>
         <h1>{{ mensaje }}</h1>
@@ -7,12 +8,18 @@
 
         <button @click="comunicarHijo">Comunicar Hijo</button>
     </div>
+=======
+  <h3>Selecciona el Pkemon Correcto</h3>
+  <PokemonImage :pokemonId="85" :mostrarImg="true" />
+  <PokemonOption :pokemons="vectorPokemons"/>
+>>>>>>> de45088cefb0c4776356eee11d793d4558c98579
 </template>
 <script>
 import PokemonOption from "@/components/PokemonOption.vue";
 import PokemonImage from "@/components/PokemonImage.vue";
 import { obtenerOpcionesFachada,obtenerAleatorioFachada } from '@/clients/PokemonClient.js'
 export default {
+<<<<<<< HEAD
     data() {
         return{
         vectorPokemon: [],
@@ -20,6 +27,22 @@ export default {
         mostrar: false,
         mensaje: null,
         }
+=======
+  data() {
+    return {
+      vectorPokemons: [],
+    };
+  },
+  components: {
+    PokemonImage,
+    PokemonOption,
+  },
+  methods: {
+    async iniciarJuego() {
+      const opciones = await obtenerOpcionesFachada(8);
+      this.vectorPokemons = opciones;
+      console.log(opciones);
+>>>>>>> de45088cefb0c4776356eee11d793d4558c98579
     },
     components: {
         PokemonImage,
